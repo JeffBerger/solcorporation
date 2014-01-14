@@ -1,0 +1,29 @@
+ReportLab
+DOCS is where I was doing all of my tests, for no particular reason and I 
+didn't want to clean everything up, I'd rather just get you guys this right 
+now.
+
+Okay so the files that I think are most useful at this point are:
+
+multi_test_stable.py
+mongo_test.py
+
+These are files I wrote to produce what we have right now.  Most of the other
+python files with stupid names are mine, but were used as incremental tests.
+I have already compiled the various pdf documents, there should be 3 of the 
+form: reportlab-something.pdf
+
+Other guide info can be found in TESTS in the file:
+test-pedgen-general.py and .pdf
+
+I like to look at the code that produces the pdf.  
+
+I'm going through and making some comments now.  follow the basic installation
+guides, either found online or in the reportlab pdf docs in the DOCS folder.
+
+The best online examples I have found are at the following websites.
+
+http://www.magitech.org/2006/05/05/getting-started-with-reportlab/
+http://www.protocolostomy.com/2008/10/22/generating-reports-with-charts-using-python-reportlab/
+http://www.web2pyslices.com/slice/show/1564/pdf-with-reportlab-ii
+http://stackoverflow.com/questions/17915879/python-reportlab-inserting-image-into-table
