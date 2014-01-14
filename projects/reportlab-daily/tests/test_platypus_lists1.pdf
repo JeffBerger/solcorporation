@@ -1,0 +1,172 @@
+%PDF-1.4
+%“Œ‹ž ReportLab Generated PDF document http://www.reportlab.com
+% 'BasicFonts': class PDFDictionary 
+1 0 obj
+% The standard fonts dictionary
+<< /F1 2 0 R
+ /F2 3 0 R >>
+endobj
+% 'F1': class PDFType1Font 
+2 0 obj
+% Font Helvetica
+<< /BaseFont /Helvetica
+ /Encoding /WinAnsiEncoding
+ /Name /F1
+ /Subtype /Type1
+ /Type /Font >>
+endobj
+% 'F2': class PDFType1Font 
+3 0 obj
+% Font ZapfDingbats
+<< /BaseFont /ZapfDingbats
+ /Encoding /ZapfDingbatsEncoding
+ /Name /F2
+ /Subtype /Type1
+ /Type /Font >>
+endobj
+% 'Page1': class PDFPage 
+4 0 obj
+% Page dictionary
+<< /Contents 11 0 R
+ /MediaBox [ 0
+ 0
+ 595.2756
+ 841.8898 ]
+ /Parent 10 0 R
+ /Resources << /Font 1 0 R
+ /ProcSet [ /PDF
+ /Text
+ /ImageB
+ /ImageC
+ /ImageI ] >>
+ /Rotate 0
+ /Trans <<  >>
+ /Type /Page >>
+endobj
+% 'Annot.NUMBER1': class PDFDictionary 
+5 0 obj
+<< /A << /S /URI
+ /Type /Action
+ /URI (http://www.biometricassociates.com/downloads/user-guides/baiMobile-3000MP-User-Guide-for-Android-v2.0.pdf) >>
+ /Border [ 0
+ 0
+ 0 ]
+ /Rect [ 156.58
+ 632.6398
+ 516.13
+ 644.6398 ]
+ /Subtype /Link
+ /Type /Annot >>
+endobj
+% 'Annot.NUMBER2': class PDFDictionary 
+6 0 obj
+<< /A << /S /URI
+ /Type /Action
+ /URI (http://www.biometricassociates.com/downloads/user-guides/baiMobile-3000MP-User-Guide-for-Android-v2.0.pdf) >>
+ /Border [ 0
+ 0
+ 0 ]
+ /Rect [ 96
+ 620.6398
+ 348.3
+ 632.6398 ]
+ /Subtype /Link
+ /Type /Annot >>
+endobj
+% 'Page2': class PDFPage 
+7 0 obj
+% Page dictionary
+<< /Annots [ 5 0 R
+ 6 0 R ]
+ /Contents 12 0 R
+ /MediaBox [ 0
+ 0
+ 595.2756
+ 841.8898 ]
+ /Parent 10 0 R
+ /Resources << /Font 1 0 R
+ /ProcSet [ /PDF
+ /Text
+ /ImageB
+ /ImageC
+ /ImageI ] >>
+ /Rotate 0
+ /Trans <<  >>
+ /Type /Page >>
+endobj
+% 'R8': class PDFCatalog 
+8 0 obj
+% Document Root
+<< /Outlines 13 0 R
+ /PageMode /UseNone
+ /Pages 10 0 R
+ /Type /Catalog >>
+endobj
+% 'R9': class PDFInfo 
+9 0 obj
+<< /Author (\(anonymous\))
+ /CreationDate (D:20140106145040+06'00')
+ /Creator (\(unspecified\))
+ /Keywords ()
+ /Producer (ReportLab PDF Library - www.reportlab.com)
+ /Subject (\(unspecified\))
+ /Title (\(anonymous\)) >>
+endobj
+% 'R10': class PDFPages 
+10 0 obj
+% page tree
+<< /Count 2
+ /Kids [ 4 0 R
+ 7 0 R ]
+ /Type /Pages >>
+endobj
+% 'R11': class PDFStream 
+11 0 obj
+% page stream
+<< /Filter [ /ASCII85Decode
+ /FlateDecode ]
+ /Length 1972 >>
+stream
+Gau0E;/bGR&:Uh4s"KN#WFAFA!?Q/T\#2B[DRF[ZqpH:E(iV-bZaNfTrq`+h6V)a'!Es=VV%\2f^9KiYBBm;=s*=;o8c_+-i8\G\4<G=hn0Z$Z/H17Y(\`,<mdIf/luWH\^`1R2o,5ia^MBArZ4kaA%e4:r(+B[)&$U;1`@lDq[mkmnfF78EeWiq5D"*PrmSi>cY@-!<iNO&/!s'g\eORHi*<QWrj6Ha)HpZo',P$53(lj[;1u'+H+=FQF=H_o_h.e)7.[kL,'Y<h/iA$^lk2#YH9WqWMQ^?!DHe3UN->[bg]7F_V=]FF)<9*e>W1XC"/"I>-k^h#$>BH'PFM;r^\ip+toNqXcK/0YRK8q7j$"L/]HioTb:i3!ml/RWU%tg!'&'=!!IunYsJ!]+Io+@cP%dZOas#T2sG%@T`Ej&9::ArUs&!\l:PX^&!N8q-!i^7;LAu-(]8n/a;&]ZD]?Hqbm7c=4=!-blDqn]B;2=2Zf7Y&Yg8f,Z=B_*,o9kH?RX>dT8#IA:jh@7]l.O@-3c^Qa9>[4:&RLN>@7N]Cjk_L_pk1AX^\B9X\A/!9dH6^dJP[76f)l8<)S$^U;$U(joH?]NT]I,H+U4Y?n%r\1ppEkK-gV<'uj(;pFQ*ukdGo5UKT2'N'I=/2sO6]M'FOS/(m!;Uf>L,/![nQVQOhRe6L1RRR4O_rb)F<(Y4ZpLGh`5N*1C'3ocJfjXc8.-nB(1ETp+ddIO=Nls1Jd4CX]V#I,9iFa>\aoI!EbpL`A<_E*qm,S@W&\J7E/h>mXRSK<F0A0:`+StZA=-qs7&cMO^j@;7RS18Q)u<,1HS9'_ih<^q5SO83N(YQ-59X!hRGI2pp.2nk>I4dme"+g%#9WI*XD:^o_8Hq>]Gj.Z3/&Z`.ROhr^Fi$#gitDiC6-`T6Z:o&LsZQ,:.@h"'Ecs'[6'P/ddGU[1YHcVP+Z+A-NSX-#lI_Z.N[/'$)d^X<p0]<XG)V+oEq6r.$dt,0&7d_=I#\7VH0hH`)QL.AIHR700K!RK9``U&g]%4)i0,.26A1Ym_Eb$Of]\"X^$g<#mHR2G.Rs=Ruq/CL'C\B+_8f^6fileSb/^(^P%ll?T9ABEYi8W1h;.ME1'uT(6JU\jbHYjVJ5uDGW9A<UoUcIl(YsfT<#6g:PLsI@oKm;EkhuTDh!8cY5"q2Z^[[8WAZ]P=_ULl&\J<8roT/_>_*6[#'\MPlH(ZS.=4qSI4';@/ogn3i<2P4Nr7hkH$^YPn&R8Fm77WfGk+HL!AJ#7bG@bG3;V9^HUkP?Pf5^rg[Se2Q9.am2KIt41c0?34b$%NXDS.V\P:4Mq!nO1:,2d^,9qHP/saj:4+&*]Z1NnNdru_GiVsh+nA%TN/NM4(&ako1&T!)aRUYGU08aHJ?5gHRN_FD8Cp*`XVg;f#hCOS&VM-/=PlL@:/04BN"XVE-nZ@MG\DmV^!h^?=U'Sg=sB,DT(!PDP:gE53fVWo)4_rWa*`IAQBQ':Yb?!8&1c6Y6hlNR.MQL]8q]ALqQ!$*3%6?*)46%I;4sWVaD-kGPK4ItbW3:3Mng,r16aSkSOPXQC'RIT/D/+^TE9ATjeUtYXhmr601kdrInLEB)_+]bab4]O&e`HGXK`hO`-PTeW[!pQVpUr+15+QSG?e!eM,UVsr.WMum<B:]W84JE;7Um4Up/ri$>#bA[399gQGrJUV(K:?UucB<Z#.+i@@J=hqlj?<,(6!oMq*]K`eThBC%mpA9h"mW%D&dV(4"_cNbO0VpepaLN_c?*GPh:1_kiaIS4]l9`(NiVM^9ta>KVOUU,F2K'">'(XGWMqF=!U\p$0qN\ikkCSsaYU8"Qo\&fg?DT6:ot=WZ2iWQ<5-[/(A9L=PuAhOWH@i,De4A[*Jj,=V>;\mXSj\Q-'^8a%_`&a*`W@CiRZe\Y9U%:$)=fI^1+f6Aan]l#FKITrf2FBkuO33ggiWJ;Uu-h_Xl_u8Ek`q&Si~>endstream
+endobj
+% 'R12': class PDFStream 
+12 0 obj
+% page stream
+<< /Filter [ /ASCII85Decode
+ /FlateDecode ]
+ /Length 1117 >>
+stream
+Gb"/&;/b2Y%"8_Ks1h..W+8JC*2d^,d.X='f$;7+:FAcK::aAbGP:Ura-.K))A8s8kH#2G%GMGTr-0;J&p+He^XDOK2?7Yr0R]9SR_c"WF<8b:o`<pP/haqG?DP3>f1WWFh8ILuc'!K9;pq(MFa:e(dXB?(h4$T9dKRi]\B-,)"_Va>5cr,D<k1*fhB5%_NNV4*QOf`G-l9cCCbsoK[C($MZ-f\Y5IEAWi%s9t$ZH;jA=IQ9Ta7I@^VK+RXBr]<osBGb,e.#XXW=dC6>2%SeG`R[jQGqo]]rsg*j5>f4c^/Y8-/gUoH,4M&8i7NKZD2>A.Ok!CC/F69DGg)+5N*t7Q;[r0joU@Bl!X)/PU+t!\4s.!MNN5',8ILN^2ZV+T^Y'lYH2QRRoY]=:9s+J2E^boeN$[/e^%eNu;[WqLDI'XGg.M0tb%+n@?u@Eh`?kp!-@s![Lqs%L&46=;oq9d*uDl$g4XjTgFat]<t7(`OG(^]iB1ajE'l$hNaWFiU:(_(+Wf$<ek(uHS?_IC7X'$PX;[s<l(&K<?X(1#8%7ol<E6ibbBVnEpOOXZ%S>N#"$o^-o!!*[)X=sQ:bVQN0%9hm6Zb<L%sISM[aFQj5j<T\IL/FS2U;pe9kiJabTTJD?t-6Bp@b4GQ<l'`BM%FS`;)?S_j9k?"[GQ:U9#l:5;2G(h""#oGTo,q@3u^n!L'U=Wd=-2?Vo^"+[n**ES^XJ43>.m>"4d^".lpWaP!!Zi?3U-(B7H68$bXPH4O$JLsL5Fm<N3$G,DKNZj=gF7$$mFM$AK\M=UTb9r.*<*U?!RIY'#[^nAkTIKW)N@M,6@+.UCM%Lt%hUW9V:e12PR<4.+\kaW@,t[[t\*.UHIimGjQ:\Hq8$pCt,]8N\T39LdPP)VXT0B_r8*`6%)!BI0\"7/K?"L>a;;K-aqcu$A%Con2G)HU)O8or(7:ep"hVWLkAiu@-I"$5#*FXIPp=e/7cdHV#A9R)U@=W<mRhlV#qL;Z]I\Nt&aV)n)dmqmW2.1qgNi$eQ4j.N--.h<_"2%[_'IU!b=a%YhWukLM"pe_bNBR"e4dRe)cb'_r&B8kN^L%5ojRgiAHlX%HN2(),9kPA=E-^t4i\-*R~>endstream
+endobj
+% 'R13': class PDFOutlines 
+13 0 obj
+<< /Count 0
+ /Type /Outlines >>
+endobj
+xref
+0 14
+0000000000 65535 f
+0000000113 00000 n
+0000000221 00000 n
+0000000386 00000 n
+0000000560 00000 n
+0000000853 00000 n
+0000001172 00000 n
+0000001472 00000 n
+0000001779 00000 n
+0000001915 00000 n
+0000002185 00000 n
+0000002300 00000 n
+0000004415 00000 n
+0000005677 00000 n
+trailer
+<< /ID 
+ % ReportLab generated PDF document -- digest (http://www.reportlab.com) 
+ [(A\316\207\206\(e\306\347\253\021\364\325V\300\035{) (A\316\207\206\(e\306\347\253\021\364\325V\300\035{)] 
+
+ /Info 9 0 R
+ /Root 8 0 R
+ /Size 14 >>
+startxref
+5729
+%%EOF
