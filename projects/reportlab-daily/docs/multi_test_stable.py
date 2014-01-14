@@ -18,6 +18,9 @@ styleT = styles['Heading1']
 #doc = Canvas('combine_test.pdf')
 titlelist = []
 closeit = 0
+#  imported the MongoClient, from the data\db: right now this takes PIP data
+# the outline below is a list of functions, that are called within the master
+# program called: makeDocument.
 
 
 def framePageForm(c):
@@ -51,6 +54,8 @@ def framePageForm(c):
     #canvas.setStrokeColorRGB(0,0,0)\
     c.restoreState()
     c.endForm()
+#This draws the blue strip on the side, and is called for every page, create
+#once, call many times
 
 
 def framePage(canvas, title):
@@ -69,12 +74,14 @@ def framePage(canvas, title):
                              'Page %d' % canvas.getPageNumber())
     canvas.restoreState()
     canvas.doForm("frame")
+# the outline and bookmarks and the page numbers also on every page
 
 
 def makesubsection(canvas, title, verticaljump):
     canvas.bookmarkHorizontalAbsolute(title, verticaljump)
     #newsubsection(title)
     canvas.addOutlineEntry(title + " subsection", title, level=1)
+# call this to add a subsection for the outline
 
 
 def box(flt, center=False):
@@ -89,6 +96,8 @@ def query(field):
     biddata = bid.find({}, {"_id": 0})
     for doc in biddata:
         return doc[field]
+# this is the function from mongo_test.py, it calls a document and you pick
+# the field that you want to see
 
 
 def star(canvas, title="Title Here", aka="Comment here.",
@@ -113,6 +122,7 @@ def star(canvas, title="Title Here", aka="Comment here.",
     if nvertices == 5:
         p.close()
     canvas.drawPath(p)
+# A drawing, which is drawn by the program and placed.
 
 
 def makeDocument(filename, pageCallBack=None):
@@ -123,14 +133,15 @@ def makeDocument(filename, pageCallBack=None):
     titlelist = []
     closeit = 0
 
-    c = Canvas(filename)
+    c = Canvas(filename)  # the Canvas is our document, we then place items
     c.setPageCompression(0)
     c.setPageCallBack(pageCallBack)
     framePageForm(c)  # define the frame form
     framePage(c, 'SBS|Charge-Demo Bid')
     makesubsection(c, "Philosophizing", 10 * inch)
     story = []
-    #add some flowables
+    #story is a list of items we want to add, the items are called flowables
+    #Append each flowable to the story, then we build it at the end
     story.append(Paragraph("Philosophizing", styleH))
     story.append(Paragraph("""
     This is a paragraph in <i>Normal</i> style.  We do understand exactly why
@@ -149,7 +160,10 @@ def makeDocument(filename, pageCallBack=None):
     makesubsection(c, "Table", 9 * inch)
     story.append(t)
     f = Frame(inch, inch, 6.5 * inch, 9 * inch, showBoundary=0)
-    f.addFromList(story, c)
+    #on each page I've made 1 frame, you could make as many as you want, and
+    # then append different "stories" to each one
+    f.addFromList(story, c)  # This adds everything to the frame, then paints
+    #on the canvas
     c.showPage()
 # END OF PAGE 1
     framePage(c, 'Chart and stars and paragraph')
