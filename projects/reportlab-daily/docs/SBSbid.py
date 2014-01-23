@@ -3,10 +3,13 @@ from reportlab.lib.styles import getSampleStyleSheet
 from reportlab.graphics.charts.barcharts import VerticalBarChart
 from reportlab.lib.units import inch
 from reportlab.platypus import (Paragraph, Spacer, Image, Table, TableStyle,
-                                Frame)
+                                Frame, ListFlowable, ListItem, Flowable)
 #from reportlab.rl_config import defaultPageSize
 from reportlab.lib import colors
+from reportlab.lib.colors import tan, green
+from reportlab.lib.colors import red, green
 import pymongo
+#import pdf
 from reportlab.graphics.shapes import Drawing
 
 client = pymongo.MongoClient("localhost", 27017)
@@ -37,17 +40,17 @@ def framePageForm(c):
     c.rect(0.3 * inch, inch, 0.5 * inch, 10 * inch, fill=1)
     from reportlab.lib import corp
     c.translate(0.8 * inch, 9.6 * inch)
-    c.rotate(00)
-    a = Image("SBSchargeLogo.jpg")
+    c.rotate(90)
+    #a = Image("SBSchargeLogo.jpg")
     #a.drawHeight = 0.5 * inch
     #a.drawWidth = 2 * inch
-    c.drawImage(a)
-    #logo = corp.ReportLabLogo(width=1.3 * inch, height=0.5 * inch,
-     #                         powered_by=1)
+    #c.drawImage(a)
+    logo = corp.ReportLabLogo(width=1.3 * inch, height=0.5 * inch,
+                              powered_by=1)
     #Sbslogo = Paragraph("SBS|Charge", styleH)
     c.setFillColorRGB(1, 1, 1)
     c.setStrokeColorRGB(1, 1, 1)
-    #logo.draw(c)
+    logo.draw(c)
     #c.setStrokeColorRGB(1,0,0)
     #c.setLineWidth(5)
     #c.line(0.8 * inch, inch, 0.8 * inch, 10.75 * inch)
@@ -120,6 +123,114 @@ def star(canvas, title="Title Here", aka="Comment here.",
     canvas.drawPath(p)
 
 
+def hand(canvas, debug=1, fill=0):
+    (startx, starty) = (0, 0)
+    curves = [
+        (0, 2), (0, 4), (0, 8),  # back of hand
+        (5, 8), (7, 10), (7, 14),
+        (10, 14), (10, 13), (7.5, 8),  # thumb
+        (13, 8), (14, 8), (17, 8),
+        (19, 8), (19, 6), (17, 6),
+        (15, 6), (13, 6), (11, 6),  # index, pointing
+        (12, 6), (13, 6), (14, 6),
+        (16, 6), (16, 4), (14, 4),
+        (13, 4), (12, 4), (11, 4),  # middle
+        (11.5, 4), (12, 4), (13, 4),
+        (15, 4), (15, 2), (13, 2),
+        (12.5, 2), (11.5, 2), (11, 2),  # ring
+        (11.5, 2), (12, 2), (12.5, 2),
+        (14, 2), (14, 0), (12.5, 0),
+        (10, 0), (8, 0), (6, 0),  # pinky, then close
+    ]
+    if debug:
+        canvas.setLineWidth(6)
+    u = inch * 0.2
+    p = canvas.beginPath()
+    p.moveTo(startx, starty)
+    ccopy = list(curves)
+    while ccopy:
+        [(x1, y1), (x2, y2), (x3, y3)] = ccopy[:3]
+        del ccopy[:3]
+        p.curveTo(x1 * u, y1 * u, x2 * u, y2 * u, x3 * u, y3 * u)
+        p.close()
+    canvas.drawPath(p, fill=fill)
+    if debug:
+        (lastx, lasty) = (startx, starty)
+    ccopy = list(curves)
+    while ccopy:
+        [(x1, y1), (x2, y2), (x3, y3)] = ccopy[:3]
+        del ccopy[:3]
+        canvas.setStrokeColor(red)
+        canvas.line(lastx * u, lasty * u, x1 * u, y1 * u)
+        canvas.setStrokeColor(green)
+        canvas.line(x2 * u, y2 * u, x3 * u, y3 * u)
+        (lastx, lasty) = (x3, y3)
+
+
+class HandAnnotation(Flowable):
+    '''A hand flowable.'''
+    def __init__(self, xoffset=0, size=None, fillcolor=tan, strokecolor=green):
+        from reportlab.lib.units import inch
+        if size is None:
+            size = 4 * inch
+        self.fillcolor, self.strokecolor = fillcolor, strokecolor
+        self.xoffset = xoffset
+        self.size = size
+        # normal size is 4 inches
+        self.scale = size / (4.0 * inch)
+        self.canv = Canvas
+
+    def wrap(self, *args):
+        return (self.xoffset, self.size)
+
+    def draw(self):
+        canvas = self.canv
+        canvas.setLineWidth(6)
+        canvas.setFillColor(self.fillcolor)
+        canvas.setStrokeColor(self.strokecolor)
+        canvas.translate(self.xoffset + self.size, 0)
+        canvas.rotate(90)
+        canvas.scale(self.scale, self.scale)
+        hand(canvas, debug=0, fill=1)
+
+
+def calc_table_col_widths(rows, table_width):
+    max_chars_per_col = [0] * len(rows[0])
+    for row in rows:
+        for idx, col in enumerate(row):
+            for line in str(col).split('\n'):
+                max_chars_per_col[idx] = max(len(line),
+                                             max_chars_per_col[idx])
+    sum_chars = sum(max_chars_per_col)
+    return [(x * table_width / sum_chars) for x in max_chars_per_col]
+
+
+def add(self, flowable):
+        self.story.append(flowable)
+
+
+table_style = [
+    ('ALIGN', (0, 0), (-1, -1), 'LEFT'),
+    ('VALIGN', (0, 0), (-1, -1), 'TOP'),
+    ('FONT', (0, 0), (-1, 0), 'Helvetica-Bold'),
+    ('LINEBELOW', (0, 0), (-1, 0), 1, colors.black),
+    ('BACKGROUND', (0, 0), (-1, 0), colors.HexColor('#C0C0C0')),
+    ('ROWBACKGROUNDS', (0, 1), (-1, -1), [colors.white,
+                                          colors.HexColor('#E0E0E0')])
+]
+
+
+def add_table(self, rows, width=None, col_widths=None, align='CENTER',
+              extra_style=[]):
+        style = table_style + extra_style
+        if width and col_widths is None:
+        # one cannot spec table width in rLab only col widths
+            col_widths = calc_table_col_widths(rows, width)
+            # this helper calcs it for us
+        table = Table(rows, col_widths, style=style, hAlign=align)
+        self.add(table)
+
+
 def makeDocument(filename, pageCallBack=None):
     #the extra arg is a hack added later, so other
     #tests can get hold of the canvas just before it is
@@ -127,7 +238,6 @@ def makeDocument(filename, pageCallBack=None):
     global titlelist, closeit
     titlelist = []
     closeit = 0
-
     c = Canvas(filename)
     c.setPageCompression(0)
     c.setPageCallBack(pageCallBack)
@@ -142,17 +252,76 @@ def makeDocument(filename, pageCallBack=None):
     the system hates me.  I really really hate the autocorrect.  I really do
     not mind the tab-complete function, but the rest of this is shit.""",
                            styleN))
+    # let's move on to the divers table
+    diver_table = [['Company', 'Gross Margin', 'Total Price']]
+    # this is the header row
+    diver_table.append([query("cid"), query("gross_margin"),
+                        query("total_price")])
+        # these are the other rows
+    #add_table(diver_table, TABLE_WIDTH)
+    #add_table(diver_table, TABLE_WIDTH)
     data = [[query("cid"), query("total_price"), query("gross_margin"), '03',
             '04'],
             ['10', '11', '12', '13', '14'],
             ['20', '21', '22', '23', '24'],
             ['30', '31', '32', '33', '34']]
-    t = Table(data)
-    t.setStyle(TableStyle([('BACKGROUND', (1, 1), (-2, -2), colors.green),
-                           ('TEXTCOLOR', (0, 0), (1, -1), colors.red)]))
+    t = Table(diver_table)
+    #t.setStyle(TableStyle([('BACKGROUND', (1, 1), (-2, -2), colors.green),
+    #                       ('TEXTCOLOR', (0, 0), (1, -1), colors.red)]))
+    table_style = [
+        ('ALIGN', (0, 0), (-1, -1), 'LEFT'),
+        ('VALIGN', (0, 0), (-1, -1), 'TOP'),
+        ('FONT', (0, 0), (-1, 0), 'Helvetica-Bold'),
+        ('LINEBELOW', (0, 0), (-1, 0), 1, colors.black),
+        ('BACKGROUND', (0, 0), (-1, 0), colors.HexColor('#C0C0C0')),
+        ('ROWBACKGROUNDS', (0, 1), (-1, -1), [colors.white,
+         colors.HexColor('#E0E0E0')])
+    ]
+    t.setStyle(TableStyle(table_style))
+    t2 = Table(data)
+    t2.setStyle(TableStyle(table_style))
     story.append(Paragraph("Table of imported data", styleH))
     makesubsection(c, "Table", 9 * inch)
     story.append(t)
+    story.append(t2)
+    t = Table([[u'Corporate Assets', 'Amount'],
+               ['Fixed Assets', '1,234,567.89'],
+               ['Company Vehicle', '1,234.8901'],
+               ['Petty Cash', '42'],
+               [u'Intellectual Property\u00ae', query("total_price")],
+               ['Overdraft', '(12,345)'],
+               ['Boardroom Flat Screen', '60 inches'],
+               ['Net Position', 'Moon Base']
+               ],
+              [144, 72])
+
+    ts = TableStyle([  # first the top row
+        ('ALIGN', (1, 1), (-1, -1), 'CENTER'),
+        ('LINEABOVE', (0, 0), (-1, 0), 2, colors.purple),
+        ('LINEBELOW', (0, 0), (-1, 0), 1, colors.purple),
+        ('FONT', (0, 0), (-1, 0), 'Times-Bold'),
+
+        #bottom row has a line above, and two lines below
+        ('LINEABOVE', (0, -1), (-1, -1), 1, colors.purple),
+        # last 2 are count, sep
+        ('LINEBELOW', (0, -1), (-1, -1), 0.5, colors.purple,
+         1, None, None, 4, 1),
+        ('LINEBELOW', (0, -1), (-1, -1), 1, colors.red),
+        ('FONT', (0, -1), (-1, -1), 'Times-Bold'),
+
+        #numbers column
+        ('ALIGN', (1, 1), (-1, -1), 'DECIMAL'),
+        ('RIGHTPADDING', (1, 1), (-1, -1), 36),
+        ('TEXTCOLOR', (1, 4), (1, 4), colors.red),
+
+        #red cell
+    ]
+    )
+
+    t.setStyle(ts)
+    story.append(t)
+    story.append(Spacer(36, 36))
+
     a = Image("SBSchargeLogo.jpg")
     a.drawHeight = 0.5 * inch
     a.drawWidth = 2 * inch
@@ -160,7 +329,24 @@ def makeDocument(filename, pageCallBack=None):
     #c.rotate(90)
     story.append(a)
     #c.setPageRotation(0)
-
+    #instance = HandAnnotation()
+    #instance.wrap()
+    #instance.draw()
+    style = styles["Normal"]
+    lis = ListFlowable(
+        [
+            Paragraph("To do list", style),
+            ListItem(Paragraph("what goes in", style), bulletColor="green",
+                     value=7),
+            ListFlowable(
+                [
+                    Paragraph("excellent", style),
+                    ListItem(Paragraph('many options', style),
+                             bulletColor='red', value='square')
+                ], bulletType='bullet', start='square', ),
+            Paragraph("Finally", style), ], bulletType='i'
+    )
+    story.append(lis)
     f = Frame(inch, inch, 6.5 * inch, 9 * inch, showBoundary=0)
     f.addFromList(story, c)
     c.showPage()
